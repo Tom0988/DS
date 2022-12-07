@@ -9,6 +9,20 @@ public class IntList {
         rest = r;
     }
 
+    /** L is not allowed to change*/
+    public static IntList incrList(IntList L, int x) {
+        if (L == null) return L;
+        return new IntList(L.first + x, incrList(L.rest, x));
+    }
+
+    public static IntList dincrList(IntList L, int x) {
+        while(L != null) {
+            L.first += x;
+            L = L.rest;
+        }
+        return L;
+    }
+
     /** Return the size of the list using... recursion! */
     public int size() {
         if (rest == null) {
@@ -40,7 +54,13 @@ public class IntList {
         IntList L = new IntList(15, null);
         L = new IntList(10, L);
         L = new IntList(5, L);
+        L = new IntList(3, L);
+        L = new IntList(2, L);
 
-        System.out.println(L.get(2));
+        System.out.println(L.size());
+        IntList test = incrList(L, 5);
+        System.out.println(test.size());
+        System.out.println(L.get(1));
+        System.out.println(test.get(1));
     }
 }
