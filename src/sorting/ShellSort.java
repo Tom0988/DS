@@ -31,7 +31,7 @@ public class ShellSort {
             for(int i = gap; i < target.length; i++) {
                 int v = target[i];
                 int j = i;
-                while(j >= gap && target[j] > v) {
+                while(j >= gap && target[j-gap] > v) {
                     target[j] = target[j-gap];
                     j -= gap;
                 }
